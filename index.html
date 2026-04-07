@@ -2,15 +2,100 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sahiy Makler</title>
-<style>body{font-family:system-ui,sans-serif;max-width:700px;margin:40px auto;padding:0 20px;line-height:1.6}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sahiy Makler — AI-powered real estate video publisher for the Uzbekistan market. Translates listings, generates voiceover and video, publishes to TikTok and other platforms.">
+<title>Sahiy Makler — Real Estate Video Publisher</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  line-height: 1.65;
+  color: #1f2937;
+  background: #ffffff;
+}
+h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+h2 { font-size: 1.2rem; margin-top: 2rem; color: #111827; }
+h3 { font-size: 1rem; margin-top: 1.25rem; }
+p, li { font-size: 1rem; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.meta { color: #6b7280; font-size: 0.9rem; margin-bottom: 2rem; }
+.footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; }
+.callout { background: #f3f4f6; padding: 1rem 1.25rem; border-left: 3px solid #2563eb; border-radius: 4px; margin: 1rem 0; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: 0.35rem; }
+@media (max-width: 600px) {
+  body { padding: 20px 16px 40px; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
 </head>
 <body>
+
 <h1>Sahiy Makler</h1>
-<p>Real estate video publisher for Uzbekistan.</p>
+<p class="meta">Real Estate Video Publisher for the Uzbekistan Market</p>
+
+<h2>About</h2>
+<p>
+  <strong>Sahiy Makler</strong> is an AI-assisted tool that helps real estate professionals
+  in Uzbekistan turn property listings into short, narrated videos and publish them to
+  social media platforms — including TikTok, Instagram, YouTube, Facebook, and Odnoklassniki (OK.ru).
+</p>
+<p>
+  A user submits a property listing (text and photos) to the bot via Telegram. The system
+  translates the listing into Uzbek, generates a natural-sounding voiceover, assembles a
+  vertical short-form video from the photos, and — only after the user confirms — publishes
+  the result to the connected social media accounts.
+</p>
+
+<h2>Features</h2>
 <ul>
-<li><a href="terms.html">Terms of Service</a></li>
-<li><a href="privacy.html">Privacy Policy</a></li>
+  <li>Automatic translation of property listings into Uzbek</li>
+  <li>AI voiceover generation (ElevenLabs text-to-speech)</li>
+  <li>Vertical short-form video assembly (FFmpeg, 1080×1920)</li>
+  <li>One-click publishing to multiple platforms</li>
+  <li>Operator-controlled access (whitelist of authorized users)</li>
 </ul>
+
+<h2>TikTok Integration</h2>
+<div class="callout">
+  <p style="margin: 0;">
+    This application uses the <strong>TikTok Content Posting API</strong> with the
+    <code>video.upload</code> and <code>video.publish</code> scopes to publish real
+    estate videos directly to a user-authorized TikTok account. No personal profile
+    data, video lists, or analytics are read from TikTok.
+  </p>
+</div>
+
+<h2>How It Works</h2>
+<ol>
+  <li>The real estate professional sends a property listing and photos to the Sahiy Makler Telegram bot.</li>
+  <li>The bot translates the listing into Uzbek and produces a voiceover.</li>
+  <li>FFmpeg combines the photos and voiceover into a 1080×1920 vertical video.</li>
+  <li>The user previews the result and confirms publishing.</li>
+  <li>The video is uploaded to the user's authorized TikTok and other connected platforms.</li>
+</ol>
+
+<h2>Legal Documents</h2>
+<ul>
+  <li><a href="terms.html">Terms of Service</a></li>
+  <li><a href="privacy.html">Privacy Policy</a></li>
+</ul>
+
+<h2>Contact</h2>
+<p>
+  For questions, data requests, or support:<br>
+  Email: <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a><br>
+  Telegram: <a href="https://t.me/Sahiy_makler">@Sahiy_makler</a>
+</p>
+
+<div class="footer">
+  &copy; 2026 Sahiy Makler &middot; Operated by Abdulloh Sharifov (individual operator, Tashkent, Uzbekistan)<br>
+  Last updated: 2026-04-07
+</div>
+
 </body>
 </html>

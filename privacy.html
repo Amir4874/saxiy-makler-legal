@@ -3,29 +3,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Privacy Policy for Sahiy Makler — explains what data is collected, how TikTok video.upload and video.publish scopes are used, retention, GDPR rights, and data deletion.">
 <title>Privacy Policy — Sahiy Makler</title>
-<style>body{font-family:system-ui,sans-serif;max-width:700px;margin:40px auto;padding:0 20px;line-height:1.6;color:#333}h1{font-size:1.5rem}h2{font-size:1.1rem;margin-top:1.5rem}</style>
+<style>
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+  line-height: 1.65;
+  color: #1f2937;
+  background: #ffffff;
+}
+h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+h2 { font-size: 1.2rem; margin-top: 2rem; color: #111827; }
+h3 { font-size: 1rem; margin-top: 1.25rem; }
+p, li { font-size: 1rem; }
+a { color: #2563eb; text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { background: #f3f4f6; padding: 2px 6px; border-radius: 3px; font-size: 0.92em; }
+.meta { color: #6b7280; font-size: 0.9rem; margin-bottom: 2rem; }
+.footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; }
+.callout { background: #f3f4f6; padding: 1rem 1.25rem; border-left: 3px solid #2563eb; border-radius: 4px; margin: 1rem 0; }
+ul, ol { padding-left: 1.25rem; }
+li { margin-bottom: 0.35rem; }
+.nav { margin-bottom: 1.5rem; font-size: 0.9rem; }
+.nav a { margin-right: 1rem; }
+@media (max-width: 600px) {
+  body { padding: 20px 16px 40px; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
 </head>
 <body>
+
+<div class="nav">
+  <a href="index.html">&larr; Home</a>
+  <a href="terms.html">Terms of Service</a>
+</div>
+
 <h1>Privacy Policy</h1>
-<p><strong>Effective date:</strong> April 4, 2026</p>
+<p class="meta">Sahiy Makler &middot; Effective date: April 7, 2026 &middot; Last updated: 2026-04-07</p>
 
-<h2>1. What We Collect</h2>
-<p>We collect only the data you provide: property listing text, images, and your social media account tokens for publishing.</p>
+<h2>1. App Identification</h2>
+<p>
+  This Privacy Policy explains how <strong>Sahiy Makler</strong> ("the App", "we", "us")
+  collects, uses, stores, and protects data. Sahiy Makler is operated by
+  <strong>Abdulloh Sharifov</strong>, an individual operator based in Tashkent,
+  Republic of Uzbekistan ("the Operator"). The App is a real estate video publishing
+  tool that integrates with the TikTok Content Posting API and other social media
+  platforms to publish videos on behalf of authorized users.
+</p>
 
-<h2>2. How We Use It</h2>
-<p>Your data is used solely to generate and publish real estate videos on your behalf. We do not sell or share your data with third parties.</p>
+<h2>2. Data We Collect</h2>
 
-<h2>3. Storage</h2>
-<p>Temporary files (audio, video) are deleted after publishing. Account tokens are stored locally and encrypted.</p>
+<h3>2.1 From the user (via Telegram bot input)</h3>
+<ul>
+  <li>Real estate listing text (property description, price, location)</li>
+  <li>Property photos uploaded by the user</li>
+  <li>The user's Telegram numeric ID (used solely for access control — only whitelisted IDs may use the bot)</li>
+  <li>Optional caption preferences and publishing choices</li>
+</ul>
 
-<h2>4. Third-Party Services</h2>
-<p>The App integrates with TikTok, YouTube, Instagram, Facebook, and OK.ru. Your use of those platforms is governed by their respective privacy policies.</p>
+<h3>2.2 From TikTok</h3>
+<p>
+  The App uses a pre-authorized TikTok access token, configured by the Operator on the
+  server side. <strong>We do not collect any personal information from TikTok users.</strong>
+  The token is used exclusively to upload and publish videos via the
+  <code>video.upload</code> and <code>video.publish</code> scopes.
+</p>
 
-<h2>5. Data Deletion</h2>
-<p>You may request deletion of your data at any time by contacting us.</p>
+<h3>2.3 From other connected platforms</h3>
+<p>
+  Access tokens for Instagram, YouTube, Facebook, and Odnoklassniki (OK.ru) are stored
+  locally on the Operator's server in environment variables. No profile information,
+  follower data, comments, or analytics are read from any of these platforms.
+</p>
 
-<h2>6. Contact</h2>
-<p>Questions: <a href="https://t.me/Sahiy_makler">@Sahiy_makler on Telegram</a></p>
+<h2>3. Purpose of Data Collection</h2>
+<p>We use the data described above only for the following purposes:</p>
+<ul>
+  <li>To translate property listings into Uzbek using a large-language-model API</li>
+  <li>To generate AI voiceover audio (via ElevenLabs text-to-speech)</li>
+  <li>To assemble a vertical short-form video (1080&times;1920) using FFmpeg</li>
+  <li>To publish the resulting video to the social media accounts the user has explicitly connected and confirmed</li>
+  <li>To enforce access control (only whitelisted Telegram IDs may use the bot)</li>
+</ul>
+<p>
+  We do <strong>not</strong> use the data for advertising, profiling, behavioral analysis,
+  resale, or any purpose other than fulfilling the publishing service the user has requested.
+</p>
+
+<h2>4. TikTok-Specific Data Use</h2>
+<div class="callout">
+  <p style="margin-top: 0;">
+    <strong>Scopes used:</strong> <code>video.upload</code>, <code>video.publish</code>
+  </p>
+  <p>
+    <strong>What the App does with these scopes:</strong>
+  </p>
+  <ul>
+    <li>Uploads a pre-generated MP4 video file to TikTok via the official Content Posting API endpoint <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
+    <li>Publishes the uploaded video as <code>PUBLIC_TO_EVERYONE</code> on the user-authorized TikTok account, only after explicit user confirmation in the Telegram bot</li>
+    <li>Sets standard post settings: comments, duets, and stitch enabled (configurable per post)</li>
+  </ul>
+  <p>
+    <strong>What the App does NOT do with these scopes:</strong>
+  </p>
+  <ul>
+    <li>Read any TikTok user profile information (name, avatar, bio, follower count)</li>
+    <li>List, search, or download videos from any TikTok account</li>
+    <li>Read comments, likes, shares, or any engagement data</li>
+    <li>Fetch analytics, insights, or audience demographics</li>
+    <li>Store any TikTok user identifiers, refresh tokens, or session data beyond the operator-configured access token</li>
+    <li>Share or sell any TikTok-derived data to third parties (we do not derive any such data)</li>
+  </ul>
+  <p style="margin-bottom: 0;">
+    The App is a one-way publishing tool only. It does not read from TikTok.
+  </p>
+</div>
+
+<h2>5. Third-Party Sharing</h2>
+<p>
+  We do <strong>not</strong> sell, rent, lease, or share any user data with third parties
+  for marketing, advertising, or any commercial purpose. The only data flow to third
+  parties is the publishing of user-confirmed video content to the social media platforms
+  (TikTok, Instagram, YouTube, Facebook, OK.ru) that the user has explicitly connected.
+</p>
+<p>
+  We use the following processors strictly to deliver the service:
+</p>
+<ul>
+  <li><strong>Anthropic (Claude API)</strong> — for translating listings into Uzbek</li>
+  <li><strong>ElevenLabs</strong> — for text-to-speech voiceover generation</li>
+  <li><strong>TikTok, Meta, Google, OK.ru</strong> — as publishing destinations</li>
+</ul>
+<p>
+  Each of these processors has its own privacy policy that governs their handling of
+  the data we send.
+</p>
+
+<h2>6. Retention Period</h2>
+<ul>
+  <li><strong>Temporary media files</strong> (audio, video, images created during processing): automatically deleted within 24 hours after publishing, or immediately on processing failure.</li>
+  <li><strong>Property listing text:</strong> not persisted after the video is generated and published.</li>
+  <li><strong>Telegram user IDs (whitelist):</strong> retained as long as the user is authorized to use the bot; removed within 7 days of revocation.</li>
+  <li><strong>Platform access tokens:</strong> stored locally on the Operator's server, encrypted at rest in environment variables; rotated when the Operator regenerates them.</li>
+  <li><strong>Operational logs:</strong> retained for up to 30 days for debugging and abuse prevention, then deleted.</li>
+</ul>
+
+<h2>7. User Rights (GDPR and equivalent laws)</h2>
+<p>
+  Although Sahiy Makler operates from Uzbekistan, we honor the rights granted to users
+  under the European Union's General Data Protection Regulation (GDPR) and equivalent
+  privacy laws. You have the right to:
+</p>
+<ul>
+  <li><strong>Access</strong> — request a copy of any personal data we hold about you</li>
+  <li><strong>Rectification</strong> — request correction of inaccurate data</li>
+  <li><strong>Erasure</strong> ("right to be forgotten") — request deletion of your data</li>
+  <li><strong>Portability</strong> — request your data in a machine-readable format</li>
+  <li><strong>Restriction</strong> — request limitation of processing</li>
+  <li><strong>Objection</strong> — object to processing based on legitimate interest</li>
+  <li><strong>Withdraw consent</strong> — at any time, without affecting prior lawful processing</li>
+</ul>
+<p>
+  To exercise any of these rights, email
+  <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a>.
+  We respond to all verified requests within 30 days.
+</p>
+
+<h2>8. Children's Protection (COPPA)</h2>
+<p>
+  Sahiy Makler is intended exclusively for adults aged <strong>18 and older</strong>.
+  The service is not directed at children, and we do not knowingly collect personal
+  information from anyone under the age of 18. If we learn that we have inadvertently
+  collected data from a minor, we will delete it immediately. If you believe a minor
+  has provided us with personal information, please contact
+  <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a>.
+</p>
+
+<h2>9. Data Deletion Request</h2>
+<p>
+  To request deletion of all data associated with you, send an email to
+  <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a>
+  with the subject line <strong>"Data Deletion Request"</strong>. Include your Telegram
+  username or ID so we can identify your records. We will:
+</p>
+<ol>
+  <li>Confirm receipt within 7 days</li>
+  <li>Verify the request is genuine (to protect against unauthorized deletion)</li>
+  <li>Permanently delete all associated data within 30 days</li>
+  <li>Send written confirmation when deletion is complete</li>
+</ol>
+
+<h2>10. Security</h2>
+<p>
+  We protect data using industry-standard practices: encrypted storage of access tokens,
+  HTTPS for all API communication, restricted server access, and a whitelist-based access
+  control model. However, no method of transmission or storage is 100% secure, and we
+  cannot guarantee absolute security.
+</p>
+
+<h2>11. Changes to This Policy</h2>
+<p>
+  We may update this Privacy Policy from time to time. When we do, we will revise the
+  "Last updated" date at the top of this page. Material changes will be communicated
+  through the Telegram bot. Continued use of the App after the effective date of an
+  updated policy constitutes acceptance of the changes.
+</p>
+
+<h2>12. Contact</h2>
+<p>
+  If you have any questions, concerns, or requests regarding this Privacy Policy or your
+  personal data, please contact:
+</p>
+<p>
+  <strong>Operator:</strong> Abdulloh Sharifov (individual operator)<br>
+  <strong>Location:</strong> Tashkent, Republic of Uzbekistan<br>
+  <strong>Email:</strong> <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a><br>
+  <strong>Telegram:</strong> <a href="https://t.me/Sahiy_makler">@Sahiy_makler</a>
+</p>
+
+<div class="footer">
+  &copy; 2026 Sahiy Makler &middot; Operated by Abdulloh Sharifov (individual operator, Tashkent, Uzbekistan)<br>
+  Last updated: 2026-04-07
+</div>
+
 </body>
 </html>
