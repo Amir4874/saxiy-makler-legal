@@ -3,99 +3,572 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Sahiy Makler — AI-powered real estate video publisher for the Uzbekistan market. Translates listings, generates voiceover and video, publishes to TikTok and other platforms.">
-<title>Sahiy Makler — Real Estate Video Publisher</title>
+<meta name="description" content="Saxiy Makler — AI-powered real estate video publisher for the Uzbekistan market. Translates listings, generates voiceover and short-form vertical video, then publishes to TikTok and other platforms with user confirmation.">
+<title>Saxiy Makler — Real Estate Video Publisher for Uzbekistan</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:title" content="Saxiy Makler — Real Estate Video Publisher">
+<meta property="og:description" content="AI-powered real estate video publisher for Uzbekistan. Translates listings, generates voiceover and vertical video, publishes to TikTok with user confirmation.">
+<meta property="og:image" content="assets/logo-1024.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2563eb">
+
 <style>
 * { box-sizing: border-box; }
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --bg: #ffffff;
+  --bg-soft: #f9fafb;
+  --bg-card: #f3f4f6;
+  --border: #e5e7eb;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 32px 20px 64px;
+  margin: 0;
+  padding: 0;
   line-height: 1.65;
-  color: #1f2937;
-  background: #ffffff;
+  color: var(--text);
+  background: var(--bg);
 }
-h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
-h2 { font-size: 1.2rem; margin-top: 2rem; color: #111827; }
-h3 { font-size: 1rem; margin-top: 1.25rem; }
-p, li { font-size: 1rem; }
-a { color: #2563eb; text-decoration: none; }
-a:hover { text-decoration: underline; }
-.meta { color: #6b7280; font-size: 0.9rem; margin-bottom: 2rem; }
-.footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85rem; }
-.callout { background: #f3f4f6; padding: 1rem 1.25rem; border-left: 3px solid #2563eb; border-radius: 4px; margin: 1rem 0; }
-ul { padding-left: 1.25rem; }
-li { margin-bottom: 0.35rem; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.site-header img { width: 48px; height: 48px; border-radius: 8px; flex-shrink: 0; }
+.site-header .brand { display: flex; flex-direction: column; line-height: 1.2; }
+.site-header .brand strong { font-size: 1.05rem; color: #111827; }
+.site-header .brand small { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+.site-header nav { margin-left: auto; display: flex; gap: 18px; font-size: 0.9rem; }
+.site-header nav a { color: var(--text-muted); text-decoration: none; }
+.site-header nav a:hover { color: var(--primary); }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 56px 20px 40px;
+  background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.hero img.hero-logo { width: 96px; height: 96px; border-radius: 20px; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15); margin-bottom: 20px; }
+.hero h1 { font-size: 2.25rem; margin: 0 0 8px; color: #111827; }
+.hero .tagline { font-size: 1.15rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 24px; }
+.hero .cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.15s, transform 0.05s;
+}
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: #e5e7eb; }
+.btn:active { transform: translateY(1px); }
+
+/* Sections */
+section { padding: 48px 20px; border-bottom: 1px solid var(--border); }
+section:last-of-type { border-bottom: none; }
+section h2 { font-size: 1.6rem; color: #111827; margin: 0 0 8px; text-align: center; }
+section .lead { color: var(--text-muted); text-align: center; max-width: 620px; margin: 0 auto 32px; }
+
+/* Features grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.feature-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.feature-card .icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+.feature-card h3 { font-size: 1.05rem; margin: 0 0 6px; }
+.feature-card p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
+
+/* Screenshots */
+.screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.phone-mock {
+  background: #111827;
+  border-radius: 24px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.phone-mock .screen {
+  background: white;
+  border-radius: 16px;
+  aspect-ratio: 9 / 16;
+  padding: 14px 12px;
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+.phone-mock .screen .telegram-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #2563eb;
+}
+.phone-mock .screen .bubble {
+  background: #e0f2fe;
+  padding: 7px 10px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+.phone-mock .screen .bubble.user {
+  background: #2563eb;
+  color: white;
+  align-self: flex-end;
+}
+.phone-mock .screen .bubble.bot { background: #f3f4f6; align-self: flex-start; }
+.phone-mock .caption { color: white; text-align: center; padding-top: 10px; font-size: 0.85rem; font-weight: 500; }
+
+/* How it works */
+.steps { max-width: 720px; margin: 0 auto; counter-reset: step; }
+.step {
+  display: flex;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.step:last-child { border-bottom: none; }
+.step .num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+.step .body h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.step .body p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+/* TikTok callout */
+.tiktok-callout {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+.tiktok-callout h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.tiktok-callout code {
+  background: var(--bg-card);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+.tiktok-callout ul { padding-left: 1.25rem; margin: 8px 0; }
+.tiktok-callout li { font-size: 0.93rem; margin-bottom: 4px; }
+
+/* FAQ */
+.faq { max-width: 720px; margin: 0 auto; }
+.faq details {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #111827;
+}
+.faq summary:hover { color: var(--primary); }
+.faq p { margin: 10px 0 0; color: var(--text-muted); font-size: 0.93rem; }
+
+/* Operator */
+.operator-card {
+  max-width: 540px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 24px;
+}
+.operator-card .avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.operator-card h3 { margin: 0 0 4px; }
+.operator-card p { color: var(--text-muted); font-size: 0.92rem; margin: 0; }
+
+/* Contact */
+.contact-grid {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+.contact-item {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+}
+.contact-item .label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+.contact-item .value { font-size: 0.95rem; margin-top: 4px; word-break: break-all; }
+.contact-item a { color: var(--primary); text-decoration: none; }
+.contact-item a:hover { text-decoration: underline; }
+
+/* Footer */
+footer {
+  background: var(--bg-soft);
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--border);
+}
+footer .links { margin-bottom: 12px; }
+footer .links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
+footer .links a:hover { color: var(--primary); }
+
 @media (max-width: 600px) {
-  body { padding: 20px 16px 40px; }
-  h1 { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.65rem; }
+  .hero .tagline { font-size: 1rem; }
+  .site-header { padding: 12px 16px; }
+  .site-header nav { gap: 12px; font-size: 0.85rem; }
+  .site-header img { width: 40px; height: 40px; }
+  section { padding: 36px 16px; }
 }
 </style>
 </head>
 <body>
 
-<h1>Sahiy Makler</h1>
-<p class="meta">Real Estate Video Publisher for the Uzbekistan Market</p>
+<header class="site-header">
+  <img src="assets/logo-192.png" alt="Saxiy Makler app icon">
+  <div class="brand">
+    <strong>Saxiy Makler</strong>
+    <small>Real Estate Video Publisher</small>
+  </div>
+  <nav>
+    <a href="#how-it-works">How it works</a>
+    <a href="#tiktok">TikTok</a>
+    <a href="#faq">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </nav>
+</header>
 
-<h2>About</h2>
-<p>
-  <strong>Sahiy Makler</strong> is an AI-assisted tool that helps real estate professionals
-  in Uzbekistan turn property listings into short, narrated videos and publish them to
-  social media platforms — including TikTok, Instagram, YouTube, Facebook, and Odnoklassniki (OK.ru).
-</p>
-<p>
-  A user submits a property listing (text and photos) to the bot via Telegram. The system
-  translates the listing into Uzbek, generates a natural-sounding voiceover, assembles a
-  vertical short-form video from the photos, and — only after the user confirms — publishes
-  the result to the connected social media accounts.
-</p>
-
-<h2>Features</h2>
-<ul>
-  <li>Automatic translation of property listings into Uzbek</li>
-  <li>AI voiceover generation (ElevenLabs text-to-speech)</li>
-  <li>Vertical short-form video assembly (FFmpeg, 1080×1920)</li>
-  <li>One-click publishing to multiple platforms</li>
-  <li>Operator-controlled access (whitelist of authorized users)</li>
-</ul>
-
-<h2>TikTok Integration</h2>
-<div class="callout">
-  <p style="margin: 0;">
-    This application uses the <strong>TikTok Content Posting API</strong> with the
-    <code>video.upload</code> and <code>video.publish</code> scopes to publish real
-    estate videos directly to a user-authorized TikTok account. No personal profile
-    data, video lists, or analytics are read from TikTok.
+<!-- HERO -->
+<div class="hero">
+  <img src="assets/logo-192.png" alt="Saxiy Makler" class="hero-logo">
+  <h1>Saxiy Makler</h1>
+  <p class="tagline">
+    AI-powered real estate video publisher for the Uzbekistan market.
+    Turns property listings into short, narrated vertical videos and publishes them to TikTok and other platforms — with your confirmation, every time.
   </p>
+  <div class="cta">
+    <a href="https://t.me/Saxiy_makler" class="btn btn-primary">Get started on Telegram</a>
+    <a href="#how-it-works" class="btn btn-secondary">See how it works</a>
+  </div>
 </div>
 
-<h2>How It Works</h2>
-<ol>
-  <li>The real estate professional sends a property listing and photos to the Sahiy Makler Telegram bot.</li>
-  <li>The bot translates the listing into Uzbek and produces a voiceover.</li>
-  <li>FFmpeg combines the photos and voiceover into a 1080×1920 vertical video.</li>
-  <li>The user previews the result and confirms publishing.</li>
-  <li>The video is uploaded to the user's authorized TikTok and other connected platforms.</li>
-</ol>
+<!-- FEATURES -->
+<section id="features">
+  <h2>What Saxiy Makler does</h2>
+  <p class="lead">Built for real estate agents, brokers, and agencies in Uzbekistan who want to publish polished property videos in under a minute.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="icon">🌐</span>
+      <h3>Auto-translation</h3>
+      <p>Listings in Russian or English are translated into natural Uzbek using a large language model.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🎙️</span>
+      <h3>AI voiceover</h3>
+      <p>Natural-sounding Uzbek voiceover generated via ElevenLabs text-to-speech.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📱</span>
+      <h3>Vertical video</h3>
+      <p>FFmpeg assembles photos and voiceover into a 1080×1920 short-form video optimized for TikTok and Reels.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🚀</span>
+      <h3>Multi-platform publish</h3>
+      <p>Publish to TikTok, Instagram, YouTube, Facebook, and OK.ru — only after you confirm.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🔒</span>
+      <h3>Whitelist access</h3>
+      <p>Only authorized Telegram IDs can use the bot. No public sign-ups, no abuse.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">⚡</span>
+      <h3>Under a minute</h3>
+      <p>From listing submission to published video — the full pipeline runs in 40-60 seconds.</p>
+    </div>
+  </div>
+</section>
 
-<h2>Legal Documents</h2>
-<ul>
-  <li><a href="terms.html">Terms of Service</a></li>
-  <li><a href="privacy.html">Privacy Policy</a></li>
-</ul>
+<!-- SCREENSHOTS -->
+<section id="screens" style="background: var(--bg-soft);">
+  <h2>How it looks</h2>
+  <p class="lead">Saxiy Makler runs entirely inside Telegram — no separate app to install.</p>
+  <div class="screenshots">
+    <div>
+      <div class="phone-mock">
+        <div class="screen">
+          <div class="telegram-header">
+            <span>📨</span> Saxiy Makler bot
+          </div>
+          <div class="bubble bot">Yangi e'lon yuboring 🏠</div>
+          <div class="bubble user">3-xonali kvartira, Yunusobod, 85m², $95,000</div>
+          <div class="bubble user">📸 [6 ta rasm]</div>
+          <div class="bubble bot">✅ Qabul qilindi. Tarjima va video tayyorlanmoqda...</div>
+        </div>
+      </div>
+      <div class="phone-mock caption">1. Listing submission</div>
+    </div>
+    <div>
+      <div class="phone-mock">
+        <div class="screen">
+          <div class="telegram-header">
+            <span>🎬</span> Video preview
+          </div>
+          <div style="background: #111827; border-radius: 8px; aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem;">▶ Vertical video<br>1080×1920</div>
+          <div style="display: flex; gap: 6px; margin-top: auto;">
+            <div style="flex:1; background: #2563eb; color: white; padding: 6px; text-align: center; border-radius: 6px; font-size: 0.7rem;">✅ Publish</div>
+            <div style="flex:1; background: #f3f4f6; padding: 6px; text-align: center; border-radius: 6px; font-size: 0.7rem;">✏️ Edit</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-mock caption">2. Preview & confirm</div>
+    </div>
+    <div>
+      <div class="phone-mock">
+        <div class="screen">
+          <div class="telegram-header">
+            <span>🚀</span> Publishing
+          </div>
+          <div class="bubble bot">📤 TikTok: uploading...</div>
+          <div class="bubble bot">✅ TikTok: published</div>
+          <div class="bubble bot">📤 Instagram: uploading...</div>
+          <div class="bubble bot">✅ Instagram: published</div>
+          <div class="bubble bot">✅ All 4 platforms done</div>
+        </div>
+      </div>
+      <div class="phone-mock caption">3. Multi-platform publish</div>
+    </div>
+  </div>
+</section>
 
-<h2>Contact</h2>
-<p>
-  For questions, data requests, or support:<br>
-  Email: <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a><br>
-  Telegram: <a href="https://t.me/Sahiy_makler">@Sahiy_makler</a>
-</p>
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <h2>How it works</h2>
+  <p class="lead">Five steps, fully automated, with one explicit confirmation before anything is published.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <div class="body">
+        <h3>Submit a listing on Telegram</h3>
+        <p>The agent sends a property listing (text + photos) to the Saxiy Makler Telegram bot. Listings can be in Russian, Uzbek, or English.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div class="body">
+        <h3>Translate into Uzbek</h3>
+        <p>The bot calls a large-language-model API to produce a natural-sounding Uzbek caption tailored to TikTok-style audiences.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div class="body">
+        <h3>Generate voiceover and render video</h3>
+        <p>ElevenLabs generates the AI voiceover. FFmpeg combines photos, voiceover, captions, and watermark into a 1080×1920 vertical video.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <div class="body">
+        <h3>Preview and confirm</h3>
+        <p>The bot sends the rendered video back for preview. The agent reviews it and taps <em>Publish</em> — or <em>Edit</em> to tweak the caption or regenerate.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">5</div>
+      <div class="body">
+        <h3>Publish to all connected platforms</h3>
+        <p>Once confirmed, the video is uploaded to TikTok (via the Content Posting API) and the other connected platforms — Instagram, YouTube, Facebook, OK.ru — in parallel. Status is reported back in the same Telegram thread.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="footer">
-  &copy; 2026 Sahiy Makler &middot; Operated by Abdulloh Sharifov (individual operator, Tashkent, Uzbekistan)<br>
-  Last updated: 2026-04-07
-</div>
+<!-- TIKTOK INTEGRATION -->
+<section id="tiktok" style="background: var(--bg-soft);">
+  <h2>TikTok integration</h2>
+  <p class="lead">Saxiy Makler is a one-way publishing tool. It uploads videos — it does not read profile data, comments, or analytics.</p>
+  <div class="tiktok-callout">
+    <h3>Scopes used</h3>
+    <p>Saxiy Makler requests only the minimum scopes required to publish video:</p>
+    <ul>
+      <li><code>video.upload</code> — upload a video file to TikTok</li>
+      <li><code>video.publish</code> — publish the uploaded video on the user-authorized account</li>
+    </ul>
+    <h3 style="margin-top: 18px;">What we do</h3>
+    <ul>
+      <li>Upload a pre-rendered MP4 to <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
+      <li>Publish as <code>PUBLIC_TO_EVERYONE</code> only after the user taps <em>Publish</em> in the Telegram bot</li>
+      <li>Report the resulting <code>publish_id</code> back to the user</li>
+    </ul>
+    <h3 style="margin-top: 18px;">What we do NOT do</h3>
+    <ul>
+      <li>Read profile information, follower counts, or any user identifiers</li>
+      <li>List, search, or download videos from any TikTok account</li>
+      <li>Read comments, likes, shares, or analytics</li>
+      <li>Store TikTok identifiers or session data beyond the configured access token</li>
+      <li>Share TikTok-derived data with any third party</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>Frequently asked questions</h2>
+  <p class="lead">Answers to the most common questions about Saxiy Makler.</p>
+  <div class="faq">
+    <details>
+      <summary>Is Saxiy Makler free to use?</summary>
+      <p>Saxiy Makler is currently in private beta and access is operated by invitation only. Whitelisted real estate professionals in Uzbekistan can use the service at no charge during the beta period. Pricing details for the public launch will be announced through the Telegram bot.</p>
+    </details>
+    <details>
+      <summary>How long are my listings and videos stored?</summary>
+      <p>Temporary media files (audio, video, images created during processing) are automatically deleted within 24 hours after publishing. Property listing text is not persisted after the video is generated. Full retention details are in the <a href="privacy.html">Privacy Policy</a>.</p>
+    </details>
+    <details>
+      <summary>Can I disconnect my TikTok account?</summary>
+      <p>Yes. The operator can revoke the TikTok access token at any time, which immediately stops Saxiy Makler from publishing to TikTok on your behalf. To request a full data deletion, email <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a> with the subject "Data Deletion Request".</p>
+    </details>
+    <details>
+      <summary>Which countries does Saxiy Makler operate in?</summary>
+      <p>Saxiy Makler is operated from Tashkent, Uzbekistan, and is built for the Uzbekistan real estate market. The Uzbek-language voiceover and translation are tuned for local terminology and place names.</p>
+    </details>
+    <details>
+      <summary>Will my video include a watermark?</summary>
+      <p>Yes — every video includes a small <strong>Saxiy Makler</strong> watermark in the corner. This identifies the source of the AI-generated content and is consistent with TikTok's branding-disclosure guidelines.</p>
+    </details>
+    <details>
+      <summary>What happens if TikTok rate-limits my account?</summary>
+      <p>If TikTok returns a 429 (rate limit) or 403 (forbidden) response, Saxiy Makler automatically pauses publishing to that account for 24 hours to avoid triggering shadowban heuristics. The Telegram bot will notify you and resume automatically.</p>
+    </details>
+    <details>
+      <summary>Can I edit the AI-generated caption before publishing?</summary>
+      <p>Yes. The Telegram bot sends a preview with the generated caption. You can tap <em>Edit</em> to modify the text or regenerate it before tapping <em>Publish</em>. Nothing is published until you explicitly confirm.</p>
+    </details>
+    <details>
+      <summary>Does Saxiy Makler read my TikTok analytics or comments?</summary>
+      <p>No. Saxiy Makler is a one-way publishing tool. It only uses <code>video.upload</code> and <code>video.publish</code> scopes — no read scopes are requested or used. We never see your follower count, comments, likes, or analytics.</p>
+    </details>
+    <details>
+      <summary>How do I request access to the beta?</summary>
+      <p>Contact <a href="https://t.me/Saxiy_makler">@Saxiy_makler</a> on Telegram or email <a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a> with a short description of your real estate business and how many listings you publish per month.</p>
+    </details>
+  </div>
+</section>
+
+<!-- OPERATOR -->
+<section id="operator" style="background: var(--bg-soft);">
+  <h2>Operator</h2>
+  <p class="lead">Saxiy Makler is an independently operated service.</p>
+  <div class="operator-card">
+    <div class="avatar">AS</div>
+    <h3>Abdulloh Sharifov</h3>
+    <p>Individual operator, based in Tashkent, Republic of Uzbekistan.<br>Saxiy Makler is operated as a private, invitation-only service for the Uzbekistan real estate market.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p class="lead">For access requests, support, data inquiries, or any questions — we typically respond within 1-2 business days.</p>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="label">Email</div>
+      <div class="value"><a href="mailto:abdullohsharifov773@gmail.com">abdullohsharifov773@gmail.com</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="label">Telegram</div>
+      <div class="value"><a href="https://t.me/Saxiy_makler">@Saxiy_makler</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="label">Location</div>
+      <div class="value">Tashkent, Republic of Uzbekistan</div>
+    </div>
+    <div class="contact-item">
+      <div class="label">Response time</div>
+      <div class="value">1-2 business days</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="https://t.me/Saxiy_makler">Telegram</a>
+    <a href="mailto:abdullohsharifov773@gmail.com">Email</a>
+  </div>
+  <div>
+    &copy; 2026 Saxiy Makler &middot; Operated by Abdulloh Sharifov (individual operator, Tashkent, Uzbekistan)<br>
+    Last updated: 2026-05-11
+  </div>
+</footer>
 
 </body>
 </html>
