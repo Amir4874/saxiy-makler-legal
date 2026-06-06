@@ -52,7 +52,7 @@ Reviewer xabaridan to'g'ridan-to'g'ri:
 - Scroll qilib "TikTok-Specific Data Use" bo'limini ko'rsat
 
 **Voice-over (en):**
-> "Our Privacy Policy clearly documents how we use TikTok's video.upload and video.publish scopes — and the app icon is consistently displayed in the page header and browser tab."
+> "Our Privacy Policy clearly documents how we use TikTok's video.publish scope — and the app icon is consistently displayed in the page header and browser tab."
 
 ---
 
@@ -98,17 +98,17 @@ Keyin **video preview** keladi (bot generated video).
 **Variant A — Sandbox auth (afzal):**
 1. Brauzer ochiladi, TikTok login sahifasi
 2. Sandbox account bilan login
-3. Permission dialog: "Saxiy Makler wants access to: video.upload, video.publish"
+3. Permission dialog: "Saxiy Makler wants access to: video.publish"
 4. "Allow" tugmasini bos
 5. Brauzer yopiladi, bot'ga "✅ Authorized" keladi
 
 **Variant B — Mockup (sandbox account yo'q bo'lsa):**
 1. Bot suhbatida static screenshot/animation: "TikTok permission requested"
 2. Screenshot — TikTok OAuth dialog (test environment)
-3. "✅ User authorized video.upload + video.publish scopes"
+3. "✅ User authorized the video.publish scope"
 
 **Voice-over (en):**
-> "The user authorizes our app via TikTok's standard OAuth flow, granting only the video.upload and video.publish scopes — no read access to profile, comments, or analytics."
+> "The user authorizes our app via TikTok's standard OAuth flow, granting only the video.publish scope — no read access to profile, comments, or analytics."
 
 ---
 
@@ -154,13 +154,13 @@ Keyin **video preview** keladi (bot generated video).
 
 > This is Saxiy Makler — a real estate video publisher for the Uzbekistan market. You can see the official website with our app icon in the browser tab and in the page header.
 >
-> Our Privacy Policy clearly documents how we use TikTok's video.upload and video.publish scopes — and the app icon is consistently displayed in the page header and browser tab.
+> Our Privacy Policy clearly documents how we use TikTok's video.publish scope — and the app icon is consistently displayed in the page header and browser tab.
 >
 > A real estate agent submits a property listing — text and photos — to our Telegram bot. The bot accepts only whitelisted users.
 >
 > The bot translates the listing into Uzbek, generates AI voiceover with ElevenLabs, and renders a vertical short-form video using FFmpeg. The user then previews the result before publishing.
 >
-> The user authorizes our app via TikTok's standard OAuth flow, granting only the video.upload and video.publish scopes — no read access to profile, comments, or analytics.
+> The user authorizes our app via TikTok's standard OAuth flow, granting only the video.publish scope — no read access to profile, comments, or analytics.
 >
 > The video is uploaded to TikTok's Content Posting API endpoint and published as PUBLIC_TO_EVERYONE. Saxiy Makler receives the publish_id confirming success.
 >
@@ -205,10 +205,12 @@ Keyin **video preview** keladi (bot generated video).
 - [ ] Demo Video field'ga MP4 yuklash
 - [ ] "Notes for reviewer" maydonida:
   ```
-  Updated website with consistent app icon (favicon + page header) on
-  Privacy Policy and Terms of Service pages. Demo video shows real
-  end-to-end TikTok publishing flow (no flowchart). All issues from
-  the previous review have been addressed.
+  Scopes mismatch resolved: removed the unused user.info.basic (Login Kit)
+  and video.upload scopes. The app now requests only video.publish and uses
+  the Content Posting API Direct Post endpoint. The demo video is recorded in
+  the TikTok sandbox and shows the complete end-to-end flow for video.publish
+  only (no flowchart). Privacy Policy and website scope lists were updated to
+  match — they now reference video.publish exclusively.
   ```
 - [ ] Resubmit
 
@@ -230,8 +232,9 @@ Keyin **video preview** keladi (bot generated video).
 
 ## Variant tanlash
 
-**Sandbox account mavjudmi?**
-- HA → **Variant A** (real TikTok auth flow). Eng yaxshi reviewer signal.
-- YO'Q → **Variant B** (mockup). Reviewer aytdi: *"Please demonstrate with sandbox **or provide a mockup demo**"* — mockup ham qabul qilinadi.
+**⚠️ 2026-06 rad izohi:** Reviewer bu safar aniq yozdi: *"You are required to use **sandbox** to demonstrate the integration."* Demak mockup endi yetarli emas — **Variant A (sandbox) majburiy**.
 
-Eng tezi: **Variant B mockup**. Sandbox account sozlash 1-2 soat oladi, demo Variant B bilan 1-2 soatda tayyor bo'ladi.
+- **Variant A — sandbox (MAJBURIY):** TikTok Portal'da Sandbox muhitini yoqib, test account bilan real OAuth (`video.publish`) → publish flow yoziladi. Eng ishonchli reviewer signal.
+- **Variant B — mockup (faqat zaxira):** sandbox sozlash imkoni bo'lmasa. Lekin joriy raundda reviewer aniq sandbox so'ragani uchun yana rad bo'lish xavfi bor.
+
+Sandbox sozlash ~1-2 soat. Bu raundda uni o'tkazib bo'lmaydi.

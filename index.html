@@ -452,17 +452,16 @@ footer .links a:hover { color: var(--primary); }
 <!-- TIKTOK INTEGRATION -->
 <section id="tiktok" style="background: var(--bg-soft);">
   <h2>TikTok integration</h2>
-  <p class="lead">Saxiy Makler is a one-way publishing tool. It uploads videos — it does not read profile data, comments, or analytics.</p>
+  <p class="lead">Saxiy Makler is a one-way publishing tool. It publishes videos — it does not read profile data, comments, or analytics.</p>
   <div class="tiktok-callout">
     <h3>Scopes used</h3>
-    <p>Saxiy Makler requests only the minimum scopes required to publish video:</p>
+    <p>Saxiy Makler requests only the single minimum scope required to publish video:</p>
     <ul>
-      <li><code>video.upload</code> — upload a video file to TikTok</li>
-      <li><code>video.publish</code> — publish the uploaded video on the user-authorized account</li>
+      <li><code>video.publish</code> — publish a video directly to the user-authorized account (Direct Post)</li>
     </ul>
     <h3 style="margin-top: 18px;">What we do</h3>
     <ul>
-      <li>Upload a pre-rendered MP4 to <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
+      <li>Publish a pre-rendered MP4 via the Content Posting API Direct Post endpoint <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
       <li>Publish as <code>PUBLIC_TO_EVERYONE</code> only after the user taps <em>Publish</em> in the Telegram bot</li>
       <li>Report the resulting <code>publish_id</code> back to the user</li>
     </ul>
@@ -512,7 +511,7 @@ footer .links a:hover { color: var(--primary); }
     </details>
     <details>
       <summary>Does Saxiy Makler read my TikTok analytics or comments?</summary>
-      <p>No. Saxiy Makler is a one-way publishing tool. It only uses <code>video.upload</code> and <code>video.publish</code> scopes — no read scopes are requested or used. We never see your follower count, comments, likes, or analytics.</p>
+      <p>No. Saxiy Makler is a one-way publishing tool. It only uses the <code>video.publish</code> scope — no read scopes are requested or used. We never see your follower count, comments, likes, or analytics.</p>
     </details>
     <details>
       <summary>How do I request access to the beta?</summary>

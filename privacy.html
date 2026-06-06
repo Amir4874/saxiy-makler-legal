@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Privacy Policy for Saxiy Makler — explains what data is collected, how TikTok video.upload and video.publish scopes are used, retention, GDPR rights, and data deletion.">
+<meta name="description" content="Privacy Policy for Saxiy Makler — explains what data is collected, how the TikTok video.publish scope is used, retention, GDPR rights, and data deletion.">
 <title>Privacy Policy — Saxiy Makler</title>
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -102,8 +102,8 @@ li { margin-bottom: 0.35rem; }
 <p>
   The App uses a pre-authorized TikTok access token, configured by the Operator on the
   server side. <strong>We do not collect any personal information from TikTok users.</strong>
-  The token is used exclusively to upload and publish videos via the
-  <code>video.upload</code> and <code>video.publish</code> scopes.
+  The token is used exclusively to publish videos via the
+  <code>video.publish</code> scope (Direct Post).
 </p>
 
 <h3>2.3 From other connected platforms</h3>
@@ -130,18 +130,18 @@ li { margin-bottom: 0.35rem; }
 <h2>4. TikTok-Specific Data Use</h2>
 <div class="callout">
   <p style="margin-top: 0;">
-    <strong>Scopes used:</strong> <code>video.upload</code>, <code>video.publish</code>
+    <strong>Scope used:</strong> <code>video.publish</code>
   </p>
   <p>
-    <strong>What the App does with these scopes:</strong>
+    <strong>What the App does with this scope:</strong>
   </p>
   <ul>
-    <li>Uploads a pre-generated MP4 video file to TikTok via the official Content Posting API endpoint <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
-    <li>Publishes the uploaded video as <code>PUBLIC_TO_EVERYONE</code> on the user-authorized TikTok account, only after explicit user confirmation in the Telegram bot</li>
+    <li>Submits a pre-generated MP4 video file to TikTok via the official Content Posting API <strong>Direct Post</strong> endpoint <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
+    <li>Publishes the video as <code>PUBLIC_TO_EVERYONE</code> on the user-authorized TikTok account in a single Direct Post call, only after explicit user confirmation in the Telegram bot</li>
     <li>Sets standard post settings: comments, duets, and stitch enabled (configurable per post)</li>
   </ul>
   <p>
-    <strong>What the App does NOT do with these scopes:</strong>
+    <strong>What the App does NOT do with this scope:</strong>
   </p>
   <ul>
     <li>Read any TikTok user profile information (name, avatar, bio, follower count)</li>
