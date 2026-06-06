@@ -52,7 +52,7 @@ Reviewer xabaridan to'g'ridan-to'g'ri:
 - Scroll qilib "TikTok-Specific Data Use" bo'limini ko'rsat
 
 **Voice-over (en):**
-> "Our Privacy Policy clearly documents how we use TikTok's video.publish scope — and the app icon is consistently displayed in the page header and browser tab."
+> "Our Privacy Policy clearly documents how we use TikTok's user.info.basic, video.publish, and video.upload scopes — and the app icon is consistently displayed in the page header and browser tab."
 
 ---
 
@@ -95,20 +95,24 @@ Keyin **video preview** keladi (bot generated video).
 
 **Ekran:** Bot'da "Publish to TikTok" tugmasi bosiladi.
 
-**Variant A — Sandbox auth (afzal):**
-1. Brauzer ochiladi, TikTok login sahifasi
+> **Muhim:** Consent ekrani **uchchala scope**ni ko'rsatishi shart (reviewer "all scopes demonstrated" talab qiladi). 3 scope ham majburiy: Content Posting API → Login Kit → user.info.basic.
+
+**Variant A — Sandbox auth (MAJBURIY):**
+1. Brauzer ochiladi, TikTok sandbox login sahifasi
 2. Sandbox account bilan login
-3. Permission dialog: "Saxiy Makler wants access to: video.publish"
-4. "Allow" tugmasini bos
+3. Permission dialog **to'liq ko'rsatiladi** — uchchala scope ko'rinishi kerak:
+   - "Read your profile info (open id, avatar, display name)" → `user.info.basic`
+   - "Post videos to your TikTok account" → `video.publish` + `video.upload`
+4. "Allow" tugmasini bos (consent ekranini 2-3 sek to'xtatib ko'rsat — reviewer scope'larni o'qisin)
 5. Brauzer yopiladi, bot'ga "✅ Authorized" keladi
 
-**Variant B — Mockup (sandbox account yo'q bo'lsa):**
-1. Bot suhbatida static screenshot/animation: "TikTok permission requested"
-2. Screenshot — TikTok OAuth dialog (test environment)
-3. "✅ User authorized the video.publish scope"
+**Variant B — Mockup (faqat sandbox imkonsiz bo'lsa, tavsiya etilmaydi):**
+1. Bot suhbatida static screenshot: "TikTok permission requested"
+2. Screenshot — TikTok OAuth dialog uchala scope bilan
+3. "✅ User authorized: user.info.basic, video.publish, video.upload"
 
 **Voice-over (en):**
-> "The user authorizes our app via TikTok's standard OAuth flow, granting only the video.publish scope — no read access to profile, comments, or analytics."
+> "The user authorizes our app via TikTok's OAuth flow. Because the Content Posting API requires Login Kit, the consent includes user.info.basic — from which we use only the open_id to identify the account — together with video.publish and video.upload for posting. We never read profile details, comments, or analytics."
 
 ---
 
@@ -154,13 +158,13 @@ Keyin **video preview** keladi (bot generated video).
 
 > This is Saxiy Makler — a real estate video publisher for the Uzbekistan market. You can see the official website with our app icon in the browser tab and in the page header.
 >
-> Our Privacy Policy clearly documents how we use TikTok's video.publish scope — and the app icon is consistently displayed in the page header and browser tab.
+> Our Privacy Policy clearly documents how we use TikTok's user.info.basic, video.publish, and video.upload scopes — and the app icon is consistently displayed in the page header and browser tab.
 >
 > A real estate agent submits a property listing — text and photos — to our Telegram bot. The bot accepts only whitelisted users.
 >
 > The bot translates the listing into Uzbek, generates AI voiceover with ElevenLabs, and renders a vertical short-form video using FFmpeg. The user then previews the result before publishing.
 >
-> The user authorizes our app via TikTok's standard OAuth flow, granting only the video.publish scope — no read access to profile, comments, or analytics.
+> The user authorizes our app via TikTok's OAuth flow. Because the Content Posting API requires Login Kit, the consent includes user.info.basic — from which we use only the open_id to identify the account — together with video.publish and video.upload for posting. We never read profile details, comments, or analytics.
 >
 > The video is uploaded to TikTok's Content Posting API endpoint and published as PUBLIC_TO_EVERYONE. Saxiy Makler receives the publish_id confirming success.
 >
@@ -205,12 +209,16 @@ Keyin **video preview** keladi (bot generated video).
 - [ ] Demo Video field'ga MP4 yuklash
 - [ ] "Notes for reviewer" maydonida:
   ```
-  Scopes mismatch resolved: removed the unused user.info.basic (Login Kit)
-  and video.upload scopes. The app now requests only video.publish and uses
-  the Content Posting API Direct Post endpoint. The demo video is recorded in
-  the TikTok sandbox and shows the complete end-to-end flow for video.publish
-  only (no flowchart). Privacy Policy and website scope lists were updated to
-  match — they now reference video.publish exclusively.
+  Scopes mismatch: all three scopes (user.info.basic, video.publish,
+  video.upload) are mandatory — the Content Posting API requires Login Kit,
+  and Login Kit includes user.info.basic, so none can be removed. This sandbox
+  demo therefore demonstrates all three end-to-end: the OAuth consent screen
+  grants user.info.basic + video.publish + video.upload, then the video is
+  published via the Content Posting API Direct Post endpoint (no flowchart).
+  Note: user.info.basic is used only for the open_id that routes the post to
+  the correct account — we do not read profile data, comments, or analytics.
+  Privacy Policy and website scope lists were updated to match (all three
+  scopes, with the open_id-only explanation).
   ```
 - [ ] Resubmit
 

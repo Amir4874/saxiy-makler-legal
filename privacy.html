@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Privacy Policy for Saxiy Makler — explains what data is collected, how the TikTok video.publish scope is used, retention, GDPR rights, and data deletion.">
+<meta name="description" content="Privacy Policy for Saxiy Makler — explains what data is collected, how the TikTok user.info.basic, video.publish, and video.upload scopes are used, retention, GDPR rights, and data deletion.">
 <title>Privacy Policy — Saxiy Makler</title>
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
@@ -101,9 +101,14 @@ li { margin-bottom: 0.35rem; }
 <h3>2.2 From TikTok</h3>
 <p>
   The App uses a pre-authorized TikTok access token, configured by the Operator on the
-  server side. <strong>We do not collect any personal information from TikTok users.</strong>
-  The token is used exclusively to publish videos via the
-  <code>video.publish</code> scope (Direct Post).
+  server side. The token is obtained through TikTok's standard OAuth authorization, which —
+  because the Content Posting API requires TikTok's Login Kit — grants the
+  <code>user.info.basic</code> scope. <strong>From <code>user.info.basic</code> we use only
+  the <code>open_id</code></strong> that identifies which authorized account to publish to;
+  we do not read, display, or store your name, avatar, bio, follower count, or any other
+  profile field. The token is then used to publish videos via the
+  <code>video.publish</code> (Direct Post) and <code>video.upload</code> scopes of the
+  Content Posting API.
 </p>
 
 <h3>2.3 From other connected platforms</h3>
@@ -130,29 +135,30 @@ li { margin-bottom: 0.35rem; }
 <h2>4. TikTok-Specific Data Use</h2>
 <div class="callout">
   <p style="margin-top: 0;">
-    <strong>Scope used:</strong> <code>video.publish</code>
+    <strong>Scopes used:</strong> <code>user.info.basic</code>, <code>video.publish</code>, <code>video.upload</code>
   </p>
   <p>
-    <strong>What the App does with this scope:</strong>
+    <strong>What the App does with these scopes:</strong>
   </p>
   <ul>
-    <li>Submits a pre-generated MP4 video file to TikTok via the official Content Posting API <strong>Direct Post</strong> endpoint <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code></li>
-    <li>Publishes the video as <code>PUBLIC_TO_EVERYONE</code> on the user-authorized TikTok account in a single Direct Post call, only after explicit user confirmation in the Telegram bot</li>
+    <li><code>user.info.basic</code> — required because the Content Posting API depends on TikTok's Login Kit. We use only the <code>open_id</code> it returns to route the post to the correct authorized account. No name, avatar, bio, follower count, or any other profile field is read, displayed, or stored.</li>
+    <li><code>video.publish</code> — submits a pre-generated MP4 and publishes it as <code>PUBLIC_TO_EVERYONE</code> (Direct Post) on the user-authorized account via <code>https://open.tiktokapis.com/v2/post/publish/video/init/</code>, only after explicit user confirmation in the Telegram bot</li>
+    <li><code>video.upload</code> — included as part of the Content Posting API product (baseline upload capability); our publishing flow uses Direct Post</li>
     <li>Sets standard post settings: comments, duets, and stitch enabled (configurable per post)</li>
   </ul>
   <p>
-    <strong>What the App does NOT do with this scope:</strong>
+    <strong>What the App does NOT do with these scopes:</strong>
   </p>
   <ul>
-    <li>Read any TikTok user profile information (name, avatar, bio, follower count)</li>
+    <li>Read any TikTok profile field beyond the <code>open_id</code> used to route posts (no name, avatar, bio, or follower count)</li>
     <li>List, search, or download videos from any TikTok account</li>
     <li>Read comments, likes, shares, or any engagement data</li>
     <li>Fetch analytics, insights, or audience demographics</li>
-    <li>Store any TikTok user identifiers, refresh tokens, or session data beyond the operator-configured access token</li>
+    <li>Store any TikTok data beyond the operator-configured access token and the <code>open_id</code> required to route posts</li>
     <li>Share or sell any TikTok-derived data to third parties (we do not derive any such data)</li>
   </ul>
   <p style="margin-bottom: 0;">
-    The App is a one-way publishing tool only. It does not read from TikTok.
+    The App is a one-way publishing tool. The only thing it reads from TikTok is the <code>open_id</code> returned at authorization, used solely to route the post to the correct account — it reads no profile data, videos, comments, or analytics.
   </p>
 </div>
 

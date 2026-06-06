@@ -452,12 +452,14 @@ footer .links a:hover { color: var(--primary); }
 <!-- TIKTOK INTEGRATION -->
 <section id="tiktok" style="background: var(--bg-soft);">
   <h2>TikTok integration</h2>
-  <p class="lead">Saxiy Makler is a one-way publishing tool. It publishes videos — it does not read profile data, comments, or analytics.</p>
+  <p class="lead">Saxiy Makler is a one-way publishing tool. It publishes videos — it does not read profile data, comments, or analytics beyond the <code>open_id</code> that routes a post to the correct account.</p>
   <div class="tiktok-callout">
     <h3>Scopes used</h3>
-    <p>Saxiy Makler requests only the single minimum scope required to publish video:</p>
+    <p>Saxiy Makler uses the products required to publish video — TikTok's Content Posting API, which requires Login Kit. The three scopes below are mandatory for these products:</p>
     <ul>
+      <li><code>user.info.basic</code> — required because the Content Posting API depends on Login Kit. We use only the <code>open_id</code> it returns to route the post to the correct authorized account. No name, avatar, bio, or follower count is read or stored.</li>
       <li><code>video.publish</code> — publish a video directly to the user-authorized account (Direct Post)</li>
+      <li><code>video.upload</code> — included with the Content Posting API product; our flow uses Direct Post</li>
     </ul>
     <h3 style="margin-top: 18px;">What we do</h3>
     <ul>
@@ -467,10 +469,10 @@ footer .links a:hover { color: var(--primary); }
     </ul>
     <h3 style="margin-top: 18px;">What we do NOT do</h3>
     <ul>
-      <li>Read profile information, follower counts, or any user identifiers</li>
+      <li>Read profile fields beyond the <code>open_id</code> (no name, avatar, bio, or follower count)</li>
       <li>List, search, or download videos from any TikTok account</li>
       <li>Read comments, likes, shares, or analytics</li>
-      <li>Store TikTok identifiers or session data beyond the configured access token</li>
+      <li>Store TikTok data beyond the configured access token and the <code>open_id</code></li>
       <li>Share TikTok-derived data with any third party</li>
     </ul>
   </div>
@@ -511,7 +513,7 @@ footer .links a:hover { color: var(--primary); }
     </details>
     <details>
       <summary>Does Saxiy Makler read my TikTok analytics or comments?</summary>
-      <p>No. Saxiy Makler is a one-way publishing tool. It only uses the <code>video.publish</code> scope — no read scopes are requested or used. We never see your follower count, comments, likes, or analytics.</p>
+      <p>No. Saxiy Makler is a one-way publishing tool. The <code>user.info.basic</code> scope is requested only because TikTok's Login Kit is mandatory for the Content Posting API — and from it we use only the <code>open_id</code> that tells us which account to post to. We never read your name, avatar, follower count, comments, likes, or analytics.</p>
     </details>
     <details>
       <summary>How do I request access to the beta?</summary>
